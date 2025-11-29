@@ -62,8 +62,10 @@ gravity_filtrada <- vars_grav %>%
 
 data <- read_excel("DATA_30P.xlsx")
 
+gravity_filtrada2 <- gravity_filtrada[, c("socio","year","fta_wto")]
+
 data_con_acuerdos <- data %>%
-  left_join(gravity_filtrada, by = c("socio" = "socio", "año" = "year"))
+  left_join(gravity_filtrada2, by = c("socio" = "socio", "año" = "year"))
 
 # Guardar el data frame + la nueva variable (FTA)
 write.xlsx(data_con_acuerdos, "DATA_30P_2E+FTA.xlsx")
